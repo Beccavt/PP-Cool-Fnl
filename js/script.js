@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sfxWin = document.getElementById("sfxWin");
 
   // volume
-  if(bgMusic) bgMusic.volume = 0.03;
+  if(bgMusic) bgMusic.volume = 0.01;
   if(letterMusic) letterMusic.volume = 0.04;
 
   if(sfxMove) sfxMove.volume = 0.48;
