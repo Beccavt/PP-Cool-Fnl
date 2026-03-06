@@ -487,48 +487,84 @@ width:200px;
 
 @media (max-width: 768px){
 
-/* stack the hero/header area */
-.hero{
+.topbar{
 display:flex;
 flex-direction:column;
 align-items:center;
-text-align:center;
-gap:12px;
-padding:15px;
+justify-content:center;
+gap:14px;
+padding:14px 12px;
 }
 
-/* shrink the dad image */
-.hero img{
-max-width:90px;
+.brand{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:12px;
+width:100%;
+}
+
+.logo{
+width:90px;
 height:auto;
 }
 
-/* fix the title box */
-.hero-title{
-width:95%;
-max-width:350px;
+.title-box{
+width:100%;
+max-width:340px;
+padding:14px 10px;
+text-align:center;
 }
 
-/* move envelope and speaker below title */
-.envelope-btn,
-.speaker-btn{
+.site-title{
+font-size:2rem;
+line-height:1.05;
+word-break:break-word;
+}
+
+.site-subtitle{
+font-size:1rem;
+line-height:1.2;
+}
+
+.envelope-btn{
 position:static;
-margin-top:10px;
+margin:0 auto;
+display:block;
 }
 
-/* center volume slider */
 .music-controls{
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 gap:10px;
 width:100%;
-margin-top:10px;
+margin:0 auto;
 }
 
-/* make slider fit phone */
 #bgVolume{
 width:180px;
+max-width:70vw;
+}
+
+.instructions{
+padding-left:12px;
+padding-right:12px;
+}
+
+.instr-main p{
+text-align:center;
+}
+
+.key{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:42px;
+height:42px;
+font-size:1rem;
+margin:4px 2px;
 }
 
 }
