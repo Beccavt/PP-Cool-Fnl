@@ -437,12 +437,11 @@ body{
   }
 }
 
-/* mobile only */
 @media (max-width: 600px) {
   #bgVolume{
     position: relative;
-    top: 15px;
-    left: 40px;
-    width: 110px;
+    left: 110px;   /* pushes it to the right */
+    top: 5px;
+    width: 120px;
   }
 }
