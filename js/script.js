@@ -51,10 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let player = { x: start.x, y: start.y };
   let bgStarted = false;
 
-  function safePlay(a) {
-    if (!a) return;
-    const p = a.play();
-    if (p && p.catch) p.catch(() => {});
+  function safePlay(audio) {
+    if (!audio) return Promise.resolve();
+    const p = audio.play();
+    if (p && p.catch) {
+      return p.catch(() => {});
+    }
+    return Promise.resolve();
   }
 
   function setAudioVolumes() {
@@ -66,30 +69,44 @@ document.addEventListener("DOMContentLoaded", () => {
     if (sfxWin) sfxWin.volume = 0.48;
   }
 
-  function startBG() {
-    if (!bgMusic || bgStarted) return;
+  async function startBG() {
+    if (!bgMusic) return;
 
     setAudioVolumes();
-    safePlay(bgMusic);
-    bgStarted = true;
 
-    if (musicBtn) musicBtn.textContent = "🔊";
+    try {
+      await bgMusic.play();
+      bgStarted = true;
+      if (musicBtn) musicBtn.textContent = "🔊";
+    } catch (err) {
+      bgStarted = false;
+    }
   }
 
-  window.addEventListener("pointerdown", startBG, { once: true });
-  window.addEventListener("touchstart", startBG, { once: true, passive: true });
-  window.addEventListener("keydown", startBG, { once: true });
+  function tryStartBG() {
+    if (!bgStarted) {
+      startBG();
+    }
+  }
+
+  window.addEventListener("pointerdown", tryStartBG);
+  window.addEventListener("touchstart", tryStartBG, { passive: true });
+  window.addEventListener("keydown", tryStartBG);
 
   if (musicBtn) {
-    musicBtn.addEventListener("click", () => {
+    musicBtn.addEventListener("click", async () => {
       if (!bgMusic) return;
 
       setAudioVolumes();
 
       if (bgMusic.paused) {
-        safePlay(bgMusic);
-        bgStarted = true;
-        musicBtn.textContent = "🔊";
+        try {
+          await bgMusic.play();
+          bgStarted = true;
+          musicBtn.textContent = "🔊";
+        } catch (err) {
+          bgStarted = false;
+        }
       } else {
         bgMusic.pause();
         if (letterMusic) letterMusic.pause();
@@ -213,6 +230,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const mem = memories[key];
     if (!mem) return;
 
+    if (bgMusic) bgMusic.pause();
+    if (letterMusic) letterMusic.pause();
+
     modalMedia.innerHTML = "";
     modalCaption.textContent = mem.caption;
 
@@ -221,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
       v.controls = true;
       v.src = mem.src;
       v.style.width = "100%";
+      v.playsInline = true;
       modalMedia.appendChild(v);
     } else {
       const img = document.createElement("img");
@@ -234,13 +255,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function closeMemory() {
     hide(memoryModal, modalBackdrop);
+
+    const video = modalMedia.querySelector("video");
+    if (video) video.pause();
+
+    if (bgMusic) {
+      setAudioVolumes();
+      safePlay(bgMusic);
+      if (musicBtn) musicBtn.textContent = "🔊";
+    }
   }
 
   function openLetter() {
     confettiEffect();
     play(sfxEnvelope);
-
-    startBG();
 
     if (bgMusic) bgMusic.pause();
 
@@ -266,25 +294,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (envelopeBtn) envelopeBtn.addEventListener("click", openLetter);
 
-  modalClose.addEventListener("click", closeMemory);
-  modalBackdrop.addEventListener("click", closeMemory);
-  letterClose.addEventListener("click", closeLetter);
-  letterBackdrop.addEventListener("click", closeLetter);
+  if (modalClose) modalClose.addEventListener("click", closeMemory);
+  if (modalBackdrop) modalBackdrop.addEventListener("click", closeMemory);
+  if (letterClose) letterClose.addEventListener("click", closeLetter);
+  if (letterBackdrop) letterBackdrop.addEventListener("click", closeLetter);
 
-  function show(m, b) {
-    m.classList.add("show");
-    b.classList.add("show");
+  function show(modal, backdrop) {
+    modal.classList.add("show");
+    backdrop.classList.add("show");
   }
 
-  function hide(m, b) {
-    m.classList.remove("show");
-    b.classList.remove("show");
+  function hide(modal, backdrop) {
+    modal.classList.remove("show");
+    backdrop.classList.remove("show");
   }
 
-  function play(a) {
-    if (!a) return;
-    a.currentTime = 0;
-    safePlay(a);
+  function play(audio) {
+    if (!audio) return;
+    audio.currentTime = 0;
+    safePlay(audio);
   }
 });
 
