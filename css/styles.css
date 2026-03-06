@@ -116,6 +116,18 @@ body{
   z-index: 9999;
 }
 
+.music-controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-top:10px;
+}
+
+#bgVolume{
+  width:140px;
+}
+
 /* Envelope button (top right) */
 .envelope-btn{
   position: absolute;
@@ -437,17 +449,3 @@ body{
   }
 }
 
-@media (max-width: 600px) {
-
-  #musicBtn{
-    position: relative;
-    left: 90px;
-  }
-  
-  #bgVolume{
-    position: relative;
-    left: 110px;   /* pushes it to the right */
-    top: 5px;
-    width: 120px;
-  }
-}
