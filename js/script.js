@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function setAudioVolumes() {
     if (bgMusic && bgVolume) bgMusic.volume = parseFloat(bgVolume.value) * 0.5;
     if (letterMusic) letterMusic.volume = 0.04;
-    if (sfxMove) sfxMove.volume = 0.48;
+    if (sfxMove) sfxMove.volume = 1.0;
     if (sfxOpen) sfxOpen.volume = 0.32;
     if (sfxEnvelope) sfxEnvelope.volume = 0.48;
     if (sfxWin) sfxWin.volume = 0.48;
