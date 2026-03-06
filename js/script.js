@@ -61,9 +61,21 @@ if(musicBtn){
 const bgVolume = document.getElementById("bgVolume");
 
     if(bgVolume && bgMusic){
+
+    bgMusic.volume = 0.05;
+
     bgVolume.addEventListener("input", () => {
-    bgMusic.volume = parseFloat(bgVolume.value);
-  });
+
+  const v = parseFloat(bgVolume.value);
+  bgMusic.volume = v;
+
+  // forces iPhone to apply the volume
+  if(!bgMusic.paused){
+    bgMusic.pause();
+    bgMusic.play().catch(()=>{});
+  }
+
+});
 }
 
 

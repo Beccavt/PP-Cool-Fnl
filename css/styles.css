@@ -126,7 +126,8 @@ body{
 }
 
 #bgVolume{
-  width:140px;
+  display:block;
+  margin:10px auto;
 }
 
 /* Envelope button (top right) */
