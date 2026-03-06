@@ -39,75 +39,87 @@ body{
 
 /* ===== Header ===== */
 .topbar{
+  width: 100%;
   background: var(--panel);
   border-bottom: 3px solid var(--border);
-  padding: 10px;
-  position: relative;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
 
 .brand{
-  display:grid;
-  grid-template-columns:150px 1fr;
-  align-items:center;
-  gap:20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
 }
 
-/* ✅ CUSTOMIZE: make logo huge */
 .logo{
-  width: 150px;
-  height: 150px;
-  object-fit:contain;
-
-  transform:scale(1.8);
-  
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
-/* Title centered like you asked */
 .title-box{
-  background:#ffffff;
-  border:3px solid black;
-  padding:12px;
-  text-align:center;
-
-  /* move title slightly left */
-  margin-right:150px;
+  background: #ffffff;
+  border: 3px solid black;
+  padding: 12px;
+  text-align: center;
 }
-
 
 .site-title{
   margin: 0;
   font-size: 40px;
+  line-height: 1.05;
   font-weight: 900;
-  letter-spacing: 0.5px;
 }
 
 .site-subtitle{
   margin: 6px 0 0 0;
   font-size: 14px;
+  line-height: 1.2;
+}
+
+.top-controls{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.envelope-btn{
+  border: 6px solid var(--border);
+  background: #e6e1c9;
+  color: #000;
+  font-size: 34px;
+  font-weight: 900;
+  padding: 16px 20px;
+  cursor: pointer;
+}
+
+.music-controls{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .music-btn{
-  position: absolute;
-  top: 10px;
-
-
-  /* place under envelope */
-  top: 110px;
-  right: 12px;
-
   border: 6px solid var(--border);
-  background:#d9f0ff;
-  font-size:20px;
-  padding:10px 12px;
-  cursor:pointer;
+  background: #d9f0ff;
+  font-size: 20px;
+  padding: 10px 12px;
+  cursor: pointer;
 }
 
 #bgVolume{
-  width: 140px;
+  width: 160px;
   margin: 0;
-  position: relative;
-  z-index: 30;
-  touch-action: pan-x;      /* ✅ helps iPhone slider drag */
+  touch-action: pan-x;
 }
 
 .music-controls{
@@ -485,86 +497,67 @@ width:200px;
 
 }
 
-@media (max-width: 768px){
+@media (max-width:768px){
 
 .topbar{
-display:flex;
-flex-direction:column;
+width:95vw;
+margin:12px auto;
+
+display:grid;
+grid-template-columns:80px 1fr 80px;
 align-items:center;
-justify-content:center;
-gap:14px;
-padding:14px 12px;
+
+padding:10px;
 }
 
-.brand{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:12px;
-width:100%;
-}
-
+/* logo left */
 .logo{
-width:90px;
+width:70px;
 height:auto;
+transform:none;
+}
+
+/* title middle */
+.brand{
+display:contents;
 }
 
 .title-box{
-width:100%;
-max-width:340px;
-padding:14px 10px;
-text-align:center;
+margin:0;
+padding:8px;
 }
 
 .site-title{
-font-size:2rem;
-line-height:1.05;
-word-break:break-word;
+font-size:22px;
+line-height:1.1;
 }
 
 .site-subtitle{
-font-size:1rem;
-line-height:1.2;
+font-size:12px;
 }
 
-.envelope-btn{
-position:static;
-margin:0 auto;
-display:block;
-}
-
-.music-controls{
+/* envelope right */
+.top-controls{
 display:flex;
+flex-direction:column;
 align-items:center;
-justify-content:center;
-gap:10px;
-width:100%;
-margin:0 auto;
+gap:6px;
 }
 
+/* smaller buttons */
+.envelope-btn{
+font-size:22px;
+padding:8px 12px;
+}
+
+.music-btn{
+font-size:16px;
+padding:6px 8px;
+}
+
+/* smaller slider */
 #bgVolume{
-width:180px;
-max-width:70vw;
-}
-
-.instructions{
-padding-left:12px;
-padding-right:12px;
-}
-
-.instr-main p{
-text-align:center;
-}
-
-.key{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-min-width:42px;
-height:42px;
-font-size:1rem;
-margin:4px 2px;
+width:110px;
 }
 
 }
