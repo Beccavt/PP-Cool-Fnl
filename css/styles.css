@@ -438,6 +438,12 @@ body{
 }
 
 @media (max-width: 600px) {
+
+  #musicBtn{
+    position: relative;
+    left: 90px;
+  }
+  
   #bgVolume{
     position: relative;
     left: 110px;   /* pushes it to the right */
