@@ -504,20 +504,21 @@ width:95vw;
 margin:12px auto;
 
 display:grid;
-grid-template-columns:80px 1fr 80px;
+grid-template-columns:70px 1fr 90px;
 align-items:center;
 
 padding:10px;
+gap:8px;
 }
 
 /* logo left */
 .logo{
-width:70px;
+width:65px;
 height:auto;
 transform:none;
 }
 
-/* title middle */
+/* center title */
 .brand{
 display:contents;
 }
@@ -536,7 +537,7 @@ line-height:1.1;
 font-size:12px;
 }
 
-/* envelope right */
+/* RIGHT SIDE CONTROLS */
 .top-controls{
 display:flex;
 flex-direction:column;
@@ -544,20 +545,29 @@ align-items:center;
 gap:6px;
 }
 
-/* smaller buttons */
+/* mail button */
 .envelope-btn{
 font-size:22px;
-padding:8px 12px;
+padding:6px 10px;
 }
 
+/* speaker button */
 .music-btn{
 font-size:16px;
 padding:6px 8px;
 }
 
-/* smaller slider */
+/* slider under speaker */
+.music-controls{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:4px;
+}
+
+/* volume slider */
 #bgVolume{
-width:110px;
+width:90px;
 }
 
 }
