@@ -20,22 +20,24 @@
 
 <body>
   <header class="topbar">
-    <div class="brand">
-      <img class="logo" src="img/papa-cool-logo.png" alt="Papa Cool Adventure logo">
+  <div class="brand">
+    <img class="logo" src="img/papa-cool-logo.png" alt="Papa Cool Adventure logo">
 
-      <div class="title-box">
-        <h1 class="site-title">Papa Cool's Adventure Map</h1>
-        <p class="site-subtitle">Adventure through a silly maze !</p>
-      </div>
+    <div class="title-box">
+      <h1 class="site-title">Papa Cool's Adventure Map</h1>
+      <p class="site-subtitle">Adventure through a silly maze !</p>
     </div>
+  </div>
 
-    <div>
-      <button class="envelope-btn" id="envelopeBtn" aria-label="Open birthday letter">✉️</button>
-      <div class="music-controls" aria-label="Music controls">
-  <button id="musicBtn" class="music-btn" aria-label="Toggle music">🔈</button>
-  <input type="range" id="bgVolume" min="0" max="1" step="0.01" value="0.05" aria-label="Background music volume">
-</div>
-  </header>
+  <div class="top-controls">
+    <button class="envelope-btn" id="envelopeBtn" aria-label="Open birthday letter">✉️</button>
+
+    <div class="music-controls" aria-label="Music controls">
+      <button id="musicBtn" class="music-btn" aria-label="Toggle music">🔈</button>
+      <input type="range" id="bgVolume" min="0" max="1" step="0.01" value="0.05" aria-label="Background music volume">
+    </div>
+  </div>
+</header>
 
 
 
@@ -128,12 +130,12 @@
   </div>
 
   <!-- AUDIO -->
-  <audio id="bgMusic" src="media/bg-music.mp3" preload="auto" loop></audio>
-  <audio id="sfxMove" src="media/sfx-move.mp3"></audio>
+  <audio id="bgMusic" src="media/bg-music.mp3" preload="auto" loop playsinline></audio>  <audio id="sfxMove" src="media/sfx-move.mp3"></audio>
   <audio id="sfxOpen" src="media/sfx-open.mp3"></audio>
   <audio id="sfxEnvelope" src="media/sfx-envelope.mp3"></audio>
   <audio id="letterMusic" src="media/letter-music.mp3"></audio>
   <audio id="sfxWin" src="media/sfx-win.mp3"></audio>
+  <audio id="sfxTap" src="media/sfx-tap.mp3"></audio>
 
   <script src="js/script.js"></script>
 </body>

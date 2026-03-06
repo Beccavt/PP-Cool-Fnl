@@ -374,6 +374,10 @@ body{
   display:block;
 }
 
+.key.active{
+animation:keyPulse 0.25s ease;
+}
+
 /* ===== Confetti ===== */
 @keyframes confettiFall{
   0%{
@@ -454,6 +458,29 @@ body{
     font-size:1rem;
     margin:4px 2px;
   }
+}
+
+@keyframes keyPulse{
+
+0%{
+transform:scale(1);
+background:#ffffff;
+}
+
+50%{
+transform:scale(1.18);
+background:#ffd800;
+}
+
+100%{
+transform:scale(1);
+background:#ffffff;
+}
+
+}
+
+.key.active{
+animation:keyPulse 0.25s ease;
 }
 
 @media (max-width:650px){

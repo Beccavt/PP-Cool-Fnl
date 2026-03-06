@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sfxOpen = document.getElementById("sfxOpen");
   const sfxEnvelope = document.getElementById("sfxEnvelope");
   const sfxWin = document.getElementById("sfxWin");
+  const sfxTap = document.getElementById("sfxTap");
 
   const modalBackdrop = document.getElementById("modalBackdrop");
   const memoryModal = document.getElementById("memoryModal");
@@ -314,6 +315,27 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.currentTime = 0;
     safePlay(audio);
   }
+
+/* KEY BUTTON PULSE + TAP SOUND */
+const keyButtons = document.querySelectorAll(".key");
+
+keyButtons.forEach((key) => {
+  key.addEventListener("click", () => {
+
+    key.classList.add("active");
+
+    if (sfxTap) {
+      sfxTap.currentTime = 0;
+      safePlay(sfxTap);
+    }
+
+    setTimeout(() => {
+      key.classList.remove("active");
+    }, 250);
+
+    });
+  });
+  
 });
 
 function confettiEffect() {
